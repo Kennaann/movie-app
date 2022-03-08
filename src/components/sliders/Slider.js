@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import tmdbApi, { category } from '../../api/tmdbApi'
+import tmdbApi, { category, movieType } from '../../api/tmdbApi'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -25,22 +25,45 @@ function Slider(props) {
     const [items, setItems] = useState([])
 
     const [loaded, setLoaded] = useState(false)
-    // const [visibility, setVisibility] = useState('hidden')
 
     const getList = async () => {
-        let response = null
-        const params = {
+
+        let params = {
             language: 'fr'
         }
 
+
+        let response = null
+
         if (props.type !== 'similar') {
-            switch (props.category) {
-                case category.movie:
-                    response = await tmdbApi.moviesList(props.type, { params })
-                    break
-                default:
-                    response = await tmdbApi.tvList(props.type, { params })
+            if (props.type !== movieType.discover) {
+
+                switch (props.category) {
+                    case category.movie:
+                        response = await tmdbApi.moviesList(props.type, { params })
+                        break
+
+                    default:
+                        response = await tmdbApi.tvList(props.type, { params })
+                }
+            } else {
+
+                params = {
+                    language: 'fr',
+                    with_genres: props.genre
+                }
+
+                switch (props.category) {
+                    case category.movie:
+                        response = await tmdbApi.discoverMovie(props.type, { params })
+                        break
+
+                    default:
+                        response = await tmdbApi.discoverTv(props.type, { params })
+                        console.log(props.category)
+                }
             }
+
         } else {
             response = await tmdbApi.similar(props.category, props.id)
         }
@@ -99,7 +122,7 @@ function Slider(props) {
                                 navigation
                                 speed={500}
                                 slidesPerView={"auto"}
-                                slidesPerGroup={4}
+                                slidesPerGroup={5}
                                 className="hidden md:block"
                             >
                                 {
@@ -110,7 +133,6 @@ function Slider(props) {
                                     )
                                 }
                             </Swiper>
-
                         </div>
                     </>
             }

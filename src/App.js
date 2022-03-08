@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './components/pages/Home'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Moviedetail from './components/pages/Moviedetail'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home exact />} />
           <Route path="/:category/:movieId" element={<Moviedetail />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
 
     </>

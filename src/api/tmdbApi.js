@@ -10,13 +10,15 @@ export const movieType = {
     latest: 'latest',
     popular: 'popular',
     top_rated: 'top_rated',
-    now_playing: 'now_playing'
+    now_playing: 'now_playing',
+    discover: 'discover'
 }
 
 export const tvType = {
     latest: 'latest',
     popular: 'popular',
-    top_rated: 'top_rated'
+    top_rated: 'top_rated',
+    discover: 'discover'
 }
 
 const tmdbApi = {
@@ -51,6 +53,14 @@ const tmdbApi = {
     similar: (categ, id, params) => {
         const url = category[categ] + '/' + id + '/similar'
         return axiosClient.get(url, { params: {} })
+    },
+    discoverMovie: (type, params) => {
+        const url = movieType[type] + '/movie'
+        return axiosClient.get(url, params)
+    },
+    discoverTv: (type, params) => {
+        const url = tvType[type] + '/tv'
+        return axiosClient.get(url, params)
     }
 }
 

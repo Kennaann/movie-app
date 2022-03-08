@@ -60,12 +60,3 @@
     transform: scale(0.9)!important;
   }
 }
-
-
-@media (min-width: 1024px) {
-  .swiper-slide-active {
-    box-shadow: 1px 49px 45px -45px rgba(87, 103, 245, 0.4);
-    -webkit-box-shadow: 1px 49px 45px -45px rgba(87, 103, 245, 0.4);
-    -moz-box-shadow: 1px 49px 45px -45px rgba(87, 103, 245, 0.4);
-  }
-}

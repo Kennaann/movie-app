@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* Movie card style */
+  /* Movie card animation */
   .card:hover .background {
     visibility: visible;
     opacity: 1;
@@ -11,7 +11,40 @@
 
   .card:hover .play {
     transform: scale(1);
-    transition: transform linear .3s 500ms;
+    transition: transform linear 150ms 300ms;
+  }
+
+  /* large card animation */
+
+  .swiper-slide-active 
+  .card-lg-play:hover 
+  .play-icon {
+    transform: scale(1.8);
+    margin: 0.35rem;
+    color: rgb(251 191 36);
+  }
+  
+  .swiper-slide-active 
+  .card-lg-play:hover {
+    padding: 0.5rem
+  }
+
+  .swiper-slide-active
+  .card-lg-play:hover .play-text {
+    transform: translateX(-55px);
+    opacity: 0;
+  }
+  
+  .play-icon {
+    transition: margin .2s, transform .3s;
+  }
+  .card-lg-play {
+    transition: all .5s
+  }
+
+  .play-text {
+    transition: all .3S;
+    transition-delay: 300ms;
   }
 
   /* hide scroll bar on mobile */

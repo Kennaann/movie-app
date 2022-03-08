@@ -7,6 +7,7 @@ import tmdbApi from "../../api/tmdbApi"
 import apiConfig from "../../api/apiConfig"
 
 import Moviedetail from "../pages/Moviedetail"
+import CardLgPlaceholder from "../preload/CardLgPlaceholder"
 
 function CardLg({
     id,
@@ -14,6 +15,7 @@ function CardLg({
 }) {
 
     const [details, setDetails] = useState()
+    const [loaded, setLoaded] = useState(false)
 
     const getDetails = async () => {
 
@@ -23,6 +25,7 @@ function CardLg({
 
         const response = await tmdbApi.details(category, id, { params })
         setDetails(response)
+        setLoaded(true)
     }
 
     useEffect(() => {
@@ -37,8 +40,6 @@ function CardLg({
 
     let imgPath = null
 
-    // console.log(details.backdrop_path)
-
     if (details) imgPath = details.backdrop_path
 
     if (imgPath) {
@@ -49,48 +50,53 @@ function CardLg({
     }
 
     return (
-        <div>
+        <>
             {
-                details &&
-                <div className="my-0 rounded-md overflow-hidden relative">
+                !loaded ?
+                    <CardLgPlaceholder />
+                    : <div>
+                        {
+                            details &&
+                            <div className="my-0 rounded-md overflow-hidden relative">
+                                {imgPath && <img src={landscapePoster780} alt="" className="md:hidden" />}
+                                {imgPath && <img src={landscapePoster1280} alt="" className="hidden md:block lg:hidden" />}
+                                {imgPath && <img src={landscapePosterOriginal} alt="" className="hidden lg:block" />}
 
-                    {imgPath && <img src={landscapePoster500} alt="" className="sm:hidden" />}
-                    {imgPath && <img src={landscapePoster780} alt="" className="hidden sm:block md:hidden" />}
-                    {imgPath && <img src={landscapePoster1280} alt="" className="hidden md:block lg:hidden" />}
-                    {imgPath && <img src={landscapePoster1280} alt="" className="hidden lg:block" />}
+                                <div className="card-lg-description">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black opacity-80 lg:opacity-100"></div>
 
-                    <div className="card-lg-description">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black lg:from-[#020a17] opacity-80 lg:opacity-100"></div>
+                                    <div className="absolute inset-0 flex flex-col justify-end">
+                                        <div className="m-3 lg:m-7 lg:ml-11">
 
-                        <div className="absolute inset-0 flex flex-col justify-end">
-                            <div className="m-3 lg:m-7 lg:ml-11">
+                                            {details.title && <h2 className="font-semibold text-white text-xs sm:text-lg lg:text-2xl" >{details.title}</h2>}
 
-                                {details.title && <h2 className="font-semibold text-white text-sm sm:text-lg lg:text-2xl" >{details.title}</h2>}
+                                            <div className="flex wrap text-gray-300">
+                                                {
+                                                    details.genres &&
+                                                    details.genres.map((g) =>
+                                                        <p key={g.id} className="text-[0.6rem] sm:text-sm lg:text-lg px-1 first:pl-0 border-r-[1px] last:border-r-0 border-gray-300">{g.name}</p>
+                                                    )
+                                                }
+                                            </div>
 
-                                <div className="flex wrap text-gray-300">
-                                    {
-                                        details.genres &&
-                                        details.genres.map((g) =>
-                                            <p key={g.id} className="text-[0.6rem] sm:text-sm lg:text-lg px-1 first:pl-0 border-r-[1px] last:border-r-0 border-gray-300">{g.name}</p>
-                                        )
-                                    }
+                                            <Link to={`/${category}/${id}`} element={<Moviedetail />}>
+                                                <div className="card-lg-play overflow-hidden inline-flex items-center space-x-1 mt-2">
+                                                    <ImPlay2 className="play-icon text-white sm:text-lg lg:text-2xl" />
+                                                    <p className="play-text text-[0.6rem] sm:text-base lg:text-lg text-gray-300"> Voir le trailer</p>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <Link to={`/${category}/${id}`} element={<Moviedetail />}>
-                                    <div className="flex items-center space-x-1 mt-2">
-                                        <ImPlay2 className="text-white sm:text-lg lg:text-2xl" />
-                                        <p className="text-[0.6rem] sm:text-base lg:text-lg text-gray-300"> Voir le trailer</p>
-                                    </div>
-                                </Link>
                             </div>
-                        </div>
+                        }
                     </div>
-
-                </div>
             }
 
 
-        </div>
+        </>
+
 
     )
 }
