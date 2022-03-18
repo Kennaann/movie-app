@@ -46,15 +46,15 @@ function SliderLg(props) {
                 speed={500}
                 autoplay={{
                     delay: 5000,
-                    disableOnInteraction: true
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
                 }}
 
                 slidesPerView={1.2}
 
                 breakpoints={{
                     768: {
-                        slidesPerView: 1.9,
-                        // spaceBetween: 20
+                        slidesPerView: 1.9
                     }
                 }}
             >
@@ -69,7 +69,7 @@ function SliderLg(props) {
                 }
 
             </Swiper>
-        </div>
+        </div >
     )
 }
 

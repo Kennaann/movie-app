@@ -1,10 +1,17 @@
+import { useEffect } from 'react'
+
 import { movieType } from '../../api/tmdbApi'
 import slider from '../../api/slidersData'
 
 import Slider from '../sliders/Slider'
 import SliderLg from '../sliders/SliderLg'
 
+
 function Home() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className='mb-[5rem] sm:mb-[6.5rem] md:mb-0'>
@@ -14,7 +21,7 @@ function Home() {
       {/* SLIDERS */}
       {
         slider && slider.map((s) =>
-          <div key={s.title} className="relative">
+          <div key={s.title} className="home relative">
             <Slider key={s.title} type={s.type} category={s.category} title={s.title} genre={s.genre} />
           </div>
         )

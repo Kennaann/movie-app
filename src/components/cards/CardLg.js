@@ -33,20 +33,18 @@ function CardLg({
     }, [])
 
 
-    let landscapePoster500 = null
-    let landscapePoster780 = null
-    let landscapePoster1280 = null
-    let landscapePosterOriginal = null
+    let landscapePosters = {}
 
     let imgPath = null
 
     if (details) imgPath = details.backdrop_path
 
     if (imgPath) {
-        landscapePoster500 = apiConfig.w500Image(details.backdrop_path)
-        landscapePoster780 = apiConfig.w780Image(details.backdrop_path)
-        landscapePoster1280 = apiConfig.w1280Image(details.backdrop_path)
-        landscapePosterOriginal = apiConfig.originalImage(details.backdrop_path)
+        landscapePosters = {
+            landscapePoster780: apiConfig.w780Image(details.backdrop_path),
+            landscapePoster1280: apiConfig.w1280Image(details.backdrop_path),
+            landscapePosterOriginal: apiConfig.originalImage(details.backdrop_path)
+        }
     }
 
     return (
@@ -58,9 +56,9 @@ function CardLg({
                         {
                             details &&
                             <div className="my-0 rounded-md overflow-hidden relative">
-                                {imgPath && <img src={landscapePoster780} alt="" className="md:hidden" />}
-                                {imgPath && <img src={landscapePoster1280} alt="" className="hidden md:block lg:hidden" />}
-                                {imgPath && <img src={landscapePosterOriginal} alt="" className="hidden lg:block" />}
+                                {imgPath && <img src={landscapePosters.landscapePoster780} alt="" className="md:hidden" />}
+                                {imgPath && <img src={landscapePosters.landscapePoster1280} alt="" className="hidden md:block lg:hidden" />}
+                                {imgPath && <img src={landscapePosters.landscapePosterOriginal} alt="" className="hidden lg:block" />}
 
                                 <div className="card-lg-description">
                                     <div className="absolute inset-0 bg-gradient-to-t from-black opacity-80 lg:opacity-100"></div>

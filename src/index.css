@@ -20,13 +20,13 @@
   .card-lg-play:hover 
   .play-icon {
     transform: scale(1.8);
-    margin: 0.35rem;
+    /* margin: 0.35rem; */
     color: rgb(251 191 36);
   }
   
   .swiper-slide-active 
   .card-lg-play:hover {
-    padding: 0.5rem
+    padding: 0.5rem;
   }
 
   .swiper-slide-active
@@ -36,10 +36,10 @@
   }
   
   .play-icon {
-    transition: margin .2s, transform .3s;
+    transition: transform .3s;
   }
   .card-lg-play {
-    transition: all .5s
+    transition: all .3s;
   }
 
   .play-text {

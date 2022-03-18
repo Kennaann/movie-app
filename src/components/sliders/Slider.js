@@ -60,7 +60,6 @@ function Slider(props) {
 
                     default:
                         response = await tmdbApi.discoverTv(props.type, { params })
-                        console.log(props.category)
                 }
             }
 
@@ -74,7 +73,7 @@ function Slider(props) {
 
     useEffect(() => {
         getList()
-    }, [])
+    }, [props.id])
 
     return (
         <>
@@ -84,7 +83,7 @@ function Slider(props) {
                     :
                     <>
                         <div className="mb-4 sm:mb-3.5 md:mb-16 overflow-hidden">
-                            <h1 className="ml-2  sm:ml-8 py-2 md:py-2 text-sm sm:text-xl md:text-2xl" >{props.title}</h1>
+                            {props.title && <h1 className="ml-2  sm:ml-8 py-2 md:py-2 text-sm sm:text-xl md:text-2xl" >{props.title}</h1>}
                             {/* slider Mobile */}
                             <Swiper
                                 modules={[FreeMode]}

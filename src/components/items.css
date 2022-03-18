@@ -21,7 +21,6 @@
 
 .swiper-button-next {
   height: 1rem;
-  top: 36px;
   right: 2rem;
   background-image: url(../images/arrow-right.svg);
   background-repeat: no-repeat;
@@ -37,7 +36,6 @@
   right: 5rem;
   left: auto;
   height: 1rem;
-  top: 36px;
   background-image: url(../images/arrow-right.svg);
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -50,7 +48,15 @@
 }
 
 
+.home .swiper-button-prev, 
+.home .swiper-button-next {
+  top: 36px;
+}
 
+.similar .swiper-button-prev, 
+.similar .swiper-button-next {
+  top: -14px;
+}
 
 @media (min-width: 768px) {
   .swipper-lg .swiper-slide-duplicate-next, 
