@@ -6,6 +6,7 @@ import { BsFillTvFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 import Home from './pages/Home'
+import Movie from './pages/Movie'
 
 function Navbar() {
     return (
@@ -16,7 +17,9 @@ function Navbar() {
                     <AiFillHome className='text-slate-200' />
                 </Link>
                 <BiSearchAlt2 />
-                <RiMovie2Fill />
+                <Link to='/movie' element={<Movie />}>
+                    <RiMovie2Fill />
+                </Link>
                 <BsFillTvFill />
             </nav>
 
@@ -30,14 +33,46 @@ function Navbar() {
                 </Link>
 
                 <ul className='flex space-x-4 ml-8 text-lg'>
-                    <li className='flex items-center'>
-                        <AiFillHome className='mx-1' /> Accueil
+                    <li className='flex items-center py-2 overflow-hidden'>
+                        <Link
+                            to='/'
+                            element={<Home />}
+                            className="
+                                flex items-center 
+                                relative text-slate-200 
+                                after:content-[''] 
+                                after:w-full after:h-[2px] 
+                                after:bg-slate-200 
+                                after:absolute after:-bottom-[2px] 
+                                after:-translate-x-[101%] hover:after:translate-x-0
+                                after:opacity-0 hover:after:opacity-100 
+                                after:transition-all after:duration-200
+                            "
+                        >
+                            <AiFillHome className='mr-1' /> Accueil
+                        </Link>
                     </li>
                     <li className='flex items-center'>
                         <BiSearchAlt2 className='mx-1' /> Recherche
                     </li>
-                    <li className='flex items-center'>
-                        <RiMovie2Fill className='mx-1' /> Films
+                    <li className='flex items-center py-2 overflow-hidden'>
+                        <Link
+                            to='/movie'
+                            element={<Movie />}
+                            className="
+                                flex items-center 
+                                relative text-slate-200 
+                                after:content-[''] 
+                                after:w-full after:h-[2px] 
+                                after:bg-slate-200 
+                                after:absolute after:-bottom-[2px] 
+                                after:-translate-x-[101%] hover:after:translate-x-0
+                                after:opacity-0 hover:after:opacity-100 
+                                after:transition-all after:duration-200
+                            "
+                        >
+                            <RiMovie2Fill className='mx-1' /> Films
+                        </Link>
                     </li>
                     <li className='flex items-center'>
                         <BsFillTvFill className='mx-1' /> Séries

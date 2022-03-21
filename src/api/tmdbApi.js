@@ -32,13 +32,17 @@ const tmdbApi = {
         const url = 'tv/' + tvType[type]
         return axiosClient.get(url, params)
     },
+    discoverMovie: (type, params) => {
+        const url = movieType[type] + '/movie'
+        return axiosClient.get(url, params)
+    },
+    discoverTv: (type, params) => {
+        const url = tvType[type] + '/tv'
+        return axiosClient.get(url, params)
+    },
     videos: (categ, id, params) => {
         const url = category[categ] + '/' + id + '/videos'
         return axiosClient.get(url, { params: {} })
-    },
-    search: (params) => {
-        const url = 'search/multi'
-        return axiosClient.get(url, params)
     },
     details: (categ, id, params) => {
         const url = category[categ] + '/' + id
@@ -56,20 +60,16 @@ const tmdbApi = {
         const url = category[categ] + '/' + id + '/similar'
         return axiosClient.get(url, { params: {} })
     },
-    reviews: (categ, id, params) => {
-        const url = category[categ] + '/' + id + '/reviews'
-        return axiosClient.get(url, { params: {} })
-    },
     watchProviders: (categ, id, params) => {
         const url = category[categ] + '/' + id + '/watch/providers'
         return axiosClient.get(url, { params: {} })
     },
-    discoverMovie: (type, params) => {
-        const url = movieType[type] + '/movie'
-        return axiosClient.get(url, params)
+    genres: (categ, params) => {
+        const url = 'genre/' + category[categ] + '/list'
+        return axiosClient.get(url, { params: {} })
     },
-    discoverTv: (type, params) => {
-        const url = tvType[type] + '/tv'
+    search: (params) => {
+        const url = 'search/multi'
         return axiosClient.get(url, params)
     }
 }

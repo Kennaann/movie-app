@@ -3,28 +3,27 @@ import tmdbApi, { category, movieType } from '../../api/tmdbApi'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-// import Swiper core and required modules
 import { FreeMode, Navigation } from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css'
 import "swiper/css/navigation"
-import "swiper/css/free-mode";
+import "swiper/css/free-mode"
 
 // override some swiper styles
 import '../items.css'
 
-import CardSm from "../cards/CardSm"
-import CardMd from "../cards/CardMd"
-
-import SliderPlaceholder from '../preload/SliderPlaceholder'
+import Card from "../cards/Card"
+import SliderPlaceholder from '../placeholders/SliderPlaceholder'
 
 
 function Slider(props) {
 
     const [items, setItems] = useState([])
-
     const [loaded, setLoaded] = useState(false)
+
+    const cardSmDimentions = "w-24 sm:w-28 md:w-[155px] lg:w-48 h-36 sm:h-[168px] md:h-56 lg:h-72"
+    const cardMdDimentions = "w-36 sm:w-52 h-[213px] sm:h-[308px]"
 
     const getList = async () => {
 
@@ -98,8 +97,8 @@ function Slider(props) {
                                             {
                                                 items && items.map((i) =>
 
-                                                    <SwiperSlide key={i.id}>
-                                                        <CardMd key={i.id} id={i.id} poster={i.poster_path} category={props.category} />
+                                                    <SwiperSlide key={i.id} className="space-x-1" >
+                                                        <Card key={i.id} id={i.id} poster={i.poster_path} category={props.category} dimentions={cardMdDimentions} />
                                                     </SwiperSlide>
                                                 )
                                             }
@@ -109,7 +108,7 @@ function Slider(props) {
 
                                         items && items.map((i) =>
                                             <SwiperSlide key={i.id}>
-                                                <CardSm key={i.id} id={i.id} poster={i.poster_path} score={i.vote_average} category={props.category} />
+                                                <Card key={i.id} id={i.id} poster={i.poster_path} category={props.category} dimentions={cardSmDimentions} />
                                             </SwiperSlide>
                                         )
                                 }
@@ -127,7 +126,7 @@ function Slider(props) {
                                 {
                                     items && items.map((i) =>
                                         <SwiperSlide key={i.id}>
-                                            <CardSm key={i.id} id={i.id} poster={i.poster_path} score={i.vote_average} category={props.category} />
+                                            <Card key={i.id} id={i.id} poster={i.poster_path} score={i.vote_average} category={props.category} dimentions={cardSmDimentions} />
                                         </SwiperSlide>
                                     )
                                 }

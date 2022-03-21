@@ -23,12 +23,12 @@
     /* margin: 0.35rem; */
     color: rgb(251 191 36);
   }
-  
+
   .swiper-slide-active 
   .card-lg-play:hover {
-    padding: 0.5rem;
+    @apply p-2 lg:p-3
   }
-
+  
   .swiper-slide-active
   .card-lg-play:hover .play-text {
     transform: translateX(-55px);

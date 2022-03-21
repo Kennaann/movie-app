@@ -7,7 +7,7 @@ import tmdbApi from "../../api/tmdbApi"
 import apiConfig from "../../api/apiConfig"
 
 import Moviedetail from "../pages/Moviedetail"
-import CardLgPlaceholder from "../preload/CardLgPlaceholder"
+import CardLgPlaceholder from "../placeholders/CardLgPlaceholder"
 
 function CardLg({
     id,
@@ -72,7 +72,9 @@ function CardLg({
                                                 {
                                                     details.genres &&
                                                     details.genres.map((g) =>
-                                                        <p key={g.id} className="text-[0.6rem] sm:text-sm lg:text-lg px-1 first:pl-0 border-r-[1px] last:border-r-0 border-gray-300">{g.name}</p>
+                                                        <p key={g.id} className="text-[0.6rem] sm:text-sm lg:text-base after:content-['|'] last:after:content-none after:px-1 border-gray-300">
+                                                            {g.name}
+                                                        </p>
                                                     )
                                                 }
                                             </div>
