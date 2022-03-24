@@ -14,7 +14,7 @@ import "swiper/css/free-mode"
 import '../items.css'
 
 import Card from "../cards/Card"
-import SliderPlaceholder from '../placeholders/SliderPlaceholder'
+import SliderPlaceholder from '../lazyloading/SliderPlaceholder'
 
 
 function Slider(props) {
@@ -82,7 +82,7 @@ function Slider(props) {
                     :
                     <>
                         <div className="mb-4 sm:mb-3.5 md:mb-16 overflow-hidden">
-                            {props.title && <h1 className="ml-2  sm:ml-8 py-2 md:py-2 text-sm sm:text-xl md:text-2xl" >{props.title}</h1>}
+                            {props.title && <h1 className="ml-2 sm:ml-8 py-2 md:py-2 text-sm sm:text-xl md:text-2xl font-semibold" >{props.title}</h1>}
                             {/* slider Mobile */}
                             <Swiper
                                 modules={[FreeMode]}

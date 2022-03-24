@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 
-import { movieType } from '../../api/tmdbApi'
-import slider from '../../api/slidersData'
+import { movieType } from '../api/tmdbApi'
+import slider from '../api/slidersData'
 
-import Slider from '../sliders/Slider'
-import SliderLg from '../sliders/SliderLg'
+import Slider from '../components/sliders/Slider'
+import SliderLg from '../components/sliders/SliderLg'
 
 
 function Home() {
