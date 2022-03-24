@@ -13,6 +13,7 @@ function Navbar() {
     const [visible, setVisible] = useState(true)
 
     useEffect(() => {
+        // simule la détection d'un clavier virtuel
         window.addEventListener('resize', () => {
             setVisible(prevState => prevState === true ? false : true)
         })

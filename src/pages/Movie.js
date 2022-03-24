@@ -124,7 +124,7 @@ function Movie() {
             {!loaded ? <Loading /> :
                 <div className='mb-16 md:mb-4 mx-4 lg:mx-16'>
 
-                    <div className='flex items-end space-x-6 my-4'>
+                    <div className='flex justify-between md:justify-start items-center md:items-end md:space-x-6 mt-4 md:mt-8 mb-8 md:mb-6'>
                         <h1 className='text-3xl md:text-4xl font-semibold'>Films</h1>
                         <SelectDropdown genres={genres} updateGenre={updateGenre} />
                     </div>
