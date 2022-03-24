@@ -102,7 +102,7 @@ function Moviedetail() {
                         <div className="relative">
                             {/* backdrop poster */}
                             <>
-                                <img src={landscapePosters.landscapePoster780} alt="" className='md:hidden' />
+                                <img src={landscapePosters.landscapePoster780} alt="movie backdrop poster" className='md:hidden' />
                                 <img src={landscapePosters.landscapePoster1280} alt="movie backdrop poster" className='w-full h-[700px] object-cover relative hidden md:block' />
                             </>
 
@@ -193,13 +193,13 @@ function Moviedetail() {
                                                             {c.profile_path ?
                                                                 <img
                                                                     src={`https://image.tmdb.org/t/p/w300${c.profile_path}`}
-                                                                    alt="profile image"
+                                                                    alt="profile"
                                                                     className='h-28 lg:h-32 rounded-md mr-1'
                                                                 />
                                                                 :
                                                                 <img
                                                                     src={avatar}
-                                                                    alt='image indisponible'
+                                                                    alt='indisponible'
                                                                     className='h-28 lg:h-32 rounded-md mr-1 w-[75px] lg:w-[85px] object-cover'
                                                                 />
                                                             }
@@ -237,6 +237,7 @@ function Moviedetail() {
                                                     {videos.map(video =>
                                                         <div className='shrink-0' key={video.key} >
                                                             <iframe
+                                                                title={video.key}
                                                                 src={`https://youtube.com/embed/${video.key}?rel=0`}
                                                                 frameBorder="0"
                                                                 allowFullScreen
@@ -254,6 +255,7 @@ function Moviedetail() {
                                             {videos.map(video =>
                                                 <div className='shrink-0' key={video.key} >
                                                     <iframe
+                                                        title={video.key}
                                                         src={`https://youtube.com/embed/${video.key}?rel=0`}
                                                         frameBorder="0"
                                                         allowFullScreen
