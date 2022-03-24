@@ -6,7 +6,8 @@ import { BiSearchAlt2 } from 'react-icons/bi'
 import Loading from '../components/lazyloading/Loading'
 import Grid from '../components/grids/Grid'
 
-function Search() {
+
+function Search({ setVisible }) {
 
     const [media, setMedia] = useState()
     const [search, setSearch] = useState('')
@@ -58,6 +59,8 @@ function Search() {
                     className='w-full h-12 md:h-16 bg-slate-800 focus:outline-none text-xl md:text-2xl pl-10 md:pl-14'
                     ref={inputRef}
                     onChange={e => changeSearchValue(e)}
+                    onBlur={() => setVisible(true)}
+                    onFocus={() => setVisible(false)}
                 />
                 <BiSearchAlt2 className='text-2xl md:text-3xl absolute top-[14px] md:top-5 left-2 md:left-3 text-slate-400' />
             </div>

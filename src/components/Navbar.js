@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { BiSearchAlt2, BiFilm } from 'react-icons/bi'
 import { AiFillHome } from 'react-icons/ai'
 import { RiMovie2Fill } from 'react-icons/ri'
@@ -8,22 +6,8 @@ import { BsFillTvFill } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 
 
-function Navbar() {
 
-    const [visible, setVisible] = useState(true)
-
-    useEffect(() => {
-        // simule la détection d'un clavier virtuel
-        window.addEventListener('resize', () => {
-            setVisible(prevState => prevState === true ? false : true)
-        })
-
-        return () => {
-            window.removeEventListener('resize', () => {
-                setVisible(prevState => prevState === true ? false : true)
-            })
-        }
-    }, [])
+function Navbar({ visible }) {
 
     return (
         <>
