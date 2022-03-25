@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
@@ -12,6 +12,17 @@ import Search from './pages/Search'
 function App() {
 
   const [visible, setVisible] = useState(true)
+  const location = useLocation()
+
+  const navVisible = () => {
+    if (location.pathname !== '/search') {
+      setVisible(true)
+    }
+  }
+
+  useEffect(() => {
+    navVisible()
+  }, [location.pathname])
 
   return (
     <>

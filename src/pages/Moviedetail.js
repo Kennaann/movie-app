@@ -281,7 +281,7 @@ function Moviedetail() {
                     </div>
                     :
                     <div className='h-[82vh]'>
-                        <p className='w-fit m-auto font-semibold md:text-lg p-4'>Descritption insidponible</p>
+                        <p className='w-fit m-auto font-semibold md:text-lg p-4'>Description insidponible</p>
                     </div>
 
             }
