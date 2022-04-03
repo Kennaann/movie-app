@@ -19,20 +19,22 @@ function Card({
     return (
         <>
             {poster &&
-                <div
-                    className={`${dimentions} card relative shrink-0 transition-transform duration-300 `}
-                >
-                    <img
-                        src={image}
-                        alt="movie poster"
-                        className='h-full w-full object-cover rounded-md md:rounded-lg'
-                    />
-                    <div className='background absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col justify-center items-center invisible opacity-0 transition-opacity duration-300 rounded-sm md:rounded-lg'>
-                        <Link to={`/${category}/${id}`} element={<Moviedetail />} >
+                <Link to={`/${category}/${id}`} element={<Moviedetail />} >
+                    <div
+                        className={`${dimentions} card relative shrink-0 transition-transform duration-300 `}
+                    >
+                        <img
+                            src={image}
+                            alt="movie poster"
+                            className='h-full w-full object-cover rounded-md md:rounded-lg'
+                        />
+                        <div className='background absolute inset-0 bg-gray-900 bg-opacity-50 flex flex-col justify-center items-center invisible opacity-0 transition-opacity duration-300 rounded-sm md:rounded-lg'>
                             <BsFillPlayBtnFill className='play scale-[0.002] text-2xl sm:text-3xl md:text-5xl text-amber-400 hover:text-amber-300 transition-all duration-300' />
-                        </Link>
+                        </div>
                     </div>
-                </div>}
+                </Link>
+
+            }
         </>
     )
 }

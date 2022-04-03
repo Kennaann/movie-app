@@ -51,7 +51,8 @@ function CardLg({
         <>
             {!loaded ?
                 <CardLgPlaceholder />
-                : <div>
+                :
+                <Link to={`/${category}/${id}`} element={<Moviedetail />}>
                     {
                         details &&
                         <div className="my-0 rounded-md overflow-hidden relative">
@@ -78,19 +79,17 @@ function CardLg({
                                             }
                                         </div>
 
-                                        <Link to={`/${category}/${id}`} element={<Moviedetail />}>
-                                            <div className="card-lg-play overflow-hidden inline-flex items-center space-x-1 mt-2">
-                                                <ImPlay2 className="play-icon text-white sm:text-lg lg:text-2xl" />
-                                                <p className="play-text text-[0.6rem] sm:text-base lg:text-lg text-gray-300"> Voir le trailer</p>
-                                            </div>
-                                        </Link>
+                                        <div className="card-lg-play overflow-hidden inline-flex items-center space-x-1 mt-2">
+                                            <ImPlay2 className="play-icon text-white sm:text-lg lg:text-2xl" />
+                                            <p className="play-text text-[0.6rem] sm:text-base lg:text-lg text-gray-300"> Voir le trailer</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     }
-                </div>
+                </Link>
             }
 
 
